@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+// src/App.js
+import React from 'react';
+import StudyModules from './Components/StudyModules/StudyModules.js';
+import './styles/App.css';
 function App() {
+  const modules = [
+    { title: 'AP Biology', daysUntilExam: 42, studyStreak: 21 },
+    { title: 'AP US History', daysUntilExam: 46, studyStreak: 15 }
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="header">Ending Overview Page</div>
+      <div className="navigation">
+        <button className="overview">overview</button>
+        <button className="calendar">calendar</button>
+      </div>
+      <StudyModules modules={modules} />
+      <button className="add-module">+ add module</button>
     </div>
   );
 }
