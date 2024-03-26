@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Module.css';
+import '../../../styles/Module.css';
 
 function Module({ module }) {
   const { title, daysUntilExam, studyStreak } = module;

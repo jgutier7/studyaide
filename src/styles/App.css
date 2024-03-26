@@ -1,0 +1,40 @@
+/* src/styles/App.css */
+.App {
+    background-color: #1a1a1a; 
+    color: white;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .navigation {
+    display: flex;
+    gap: 10px; 
+  }
+  
+  .overview, .calendar {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+  }
+  
+  .add-module {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    margin-top: 20px; 
+    align-self: center;
+  }
+  
