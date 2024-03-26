@@ -10,7 +10,6 @@ function App() {
 
   return (
     <div className="App">
-      <div className="header">Ending Overview Page</div>
       <div className="navigation">
         <button className="overview">overview</button>
         <button className="calendar">calendar</button>

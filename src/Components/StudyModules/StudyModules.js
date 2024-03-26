@@ -1,5 +1,5 @@
 import React from 'react';
-import Module from '../Module/Module';
+import Module from './Module/Module';
 import '../../styles/StudyModules.css';
 
 function StudyModules({ modules }) {
