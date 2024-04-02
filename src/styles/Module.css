@@ -3,6 +3,7 @@
     border: 2px solid #333;
     border-radius: 8px; /* Rounded corners */
     overflow: hidden;
+    margin-bottom: 20px;
   }
   
   .module h2 {
@@ -17,9 +18,19 @@
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    background: linear-gradient(to right, #bb6bd9, #d9366b); /* Gradient bar */
     color: white;
   }
+  
+  /* Color classes for different modules */
+  .module-biology .info {
+    background: linear-gradient(to right, #6cc576, #4a8c2a); /* Green gradient */
+  }
+  
+  .module-history .info {
+    background: linear-gradient(to right, #e8a317, #a67c00); /* Orange gradient */
+  }
+  
+  /* ... additional color classes for other subjects ... */
   
   .days-until-exam, .study-streak {
     padding: 5px 10px;
