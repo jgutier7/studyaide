@@ -1,5 +1,40 @@
+/* src/styles/Module.css */
 .module {
-    border: 1px solid #000;
-    margin-bottom: 10px;
-    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden;
+    margin-bottom: 20px;
   }
+  
+  .module h2 {
+    background-color: #222; /* Darker bar for the title */
+    margin: 0;
+    padding: 10px;
+    color: #00adee; /* Light blue for the text */
+    font-size: 18px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: white;
+  }
+  
+  /* Color classes for different modules */
+  .module-biology .info {
+    background: linear-gradient(to right, #6cc576, #4a8c2a); /* Green gradient */
+  }
+  
+  .module-history .info {
+    background: linear-gradient(to right, #e8a317, #a67c00); /* Orange gradient */
+  }
+  
+  /* ... additional color classes for other subjects ... */
+  
+  .days-until-exam, .study-streak {
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,0.2); /* Slightly darker background for contrast */
+    border-radius: 4px;
+  }
+  
