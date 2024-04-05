@@ -1,13 +1,17 @@
 // src/Components/Module/Module.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../../styles/Module.css';
 
 function Module({ module }) {
   const { title, daysUntilExam, studyStreak } = module;
-  
-  // Determine the class based on the title
+  const navigate = useNavigate();
   const moduleClass = title.replace(/\s+/g, '-').toLowerCase();
-  
+
+  const goToWhiteboard = () => {
+    navigate(`/whiteboard/${moduleClass}`);
+  };
+
   return (
     <div className={`module module-${moduleClass}`}>
       <h2>{title}</h2>
@@ -15,6 +19,7 @@ function Module({ module }) {
         <div className="days-until-exam">DAYS UNTIL EXAM: {daysUntilExam}</div>
         <div className="study-streak">STUDY STREAK: {studyStreak}</div>
       </div>
+      <button onClick={goToWhiteboard}>Go to Whiteboard</button>
     </div>
   );
 }
