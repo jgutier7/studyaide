@@ -10,7 +10,7 @@
     background-color: #222; /* Darker bar for the title */
     margin: 0;
     padding: 10px;
-    color: #00adee; /* Light blue for the text */
+    color: white; /* Light blue for the text */
     font-size: 18px;
   }
   
@@ -22,19 +22,28 @@
   }
   
   /* Color classes for different modules */
+  /* these aren't getting called for some reason??? */
   .module-biology .info {
-    background: linear-gradient(to right, #6cc576, #4a8c2a); /* Green gradient */
+    background-color: #CE51C9;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
   }
   
   .module-history .info {
-    background: linear-gradient(to right, #e8a317, #a67c00); /* Orange gradient */
+    background-color: #B5CE51;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
   }
   
   /* ... additional color classes for other subjects ... */
   
   .days-until-exam, .study-streak {
     padding: 5px 10px;
-    background-color: rgba(0,0,0,0.2); /* Slightly darker background for contrast */
+    /*background-color: rgba(0,0,0,0.2); /* Slightly darker background for contrast */
     border-radius: 4px;
   }
   
