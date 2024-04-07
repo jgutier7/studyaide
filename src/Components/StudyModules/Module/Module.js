@@ -19,7 +19,7 @@ function Module({ module }) {
         <div className="days-until-exam">DAYS UNTIL EXAM: {daysUntilExam}</div>
         <div className="study-streak">STUDY STREAK: {studyStreak}</div>
       </div>
-      <button onClick={goToWhiteboard}>Go to Whiteboard</button>
+      <button onClick={goToWhiteboard}>Whiteboard</button>
     </div>
   );
 }
