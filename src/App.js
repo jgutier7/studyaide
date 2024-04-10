@@ -21,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<StudyModules modules={modules} />} />
           <Route path="/whiteboard/:moduleClass" element={<Whiteboard />} />
+          <Route path="/Login" element={<Login />} />
         </Routes>
         <button className="add-module">+ add module</button>
       </div>
