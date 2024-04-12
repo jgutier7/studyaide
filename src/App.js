@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import StudyModules from './Components/StudyModules/StudyModules';
 import Whiteboard from './Components/Whiteboard/Whiteboard';
+import Login from './Components/Login/Login';
 import './styles/App.css';
 
 function App() {
