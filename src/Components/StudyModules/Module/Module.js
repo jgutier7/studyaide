@@ -6,8 +6,8 @@ import '../../../styles/Module.css';
 function Module({ module }) {
   const { title, daysUntilExam, studyStreak } = module;
   const navigate = useNavigate();
-  const moduleClass = title.replace(/\s+/g, '-').toLowerCase();
-
+  const moduleClass = title.trim().replace(/\s+/g, '-').toLowerCase();
+  console.log(moduleClass)
   const goToWhiteboard = () => {
     navigate(`/whiteboard/${moduleClass}`);
   };

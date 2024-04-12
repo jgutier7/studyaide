@@ -23,7 +23,7 @@
   
   /* Color classes for different modules */
   /* these aren't getting called for some reason??? */
-  .module-biology .info {
+  .module-ap-biology .info {
     background-color: #CE51C9;
     border-radius: 10px;
     color: black;
@@ -31,7 +31,7 @@
     justify-content: space-between;
   }
   
-  .module-history .info {
+  .module-ap-us-history .info {
     background-color: #B5CE51;
     border-radius: 10px;
     color: black;
