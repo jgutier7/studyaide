@@ -1,28 +1,41 @@
-// src/Components/Whiteboard/Whiteboard.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Tldraw } from '@tldraw/tldraw';
 import '@tldraw/tldraw/tldraw.css';
-import Timer from './Timer';
+import CustomMainMenu from './CustomMainMenu';
+import { useEditorEvents } from './hooks';
+import { randomSelectColor } from './utils';
 
 function Whiteboard() {
   const navigate = useNavigate();
+  const { handleEvent } = useEditorEvents();
+  const [editor, setEditor] = useState(null);
+  const username = "Jacob";
 
   const handleBackToOverview = () => {
-    navigate('/'); 
+    navigate('/');
   };
-  // need to change this to be adjustable //
-  const [timerDuration] = useState(60000);
+
+  const components = {
+    MainMenu: () => <CustomMainMenu onBackToOverview={handleBackToOverview} />,
+  };
 
   return (
     <div className="whiteboard" style={{ position: 'fixed', inset: 0 }}>
-      <button onClick={handleBackToOverview} style={{ position: 'absolute', top: 10, left: 10, zIndex: 1000 }}>
-        Back to Overview
-      </button>
-      <div style={{position: 'absolute', bottom:10, right:10, zIndex: 1000 }}>
-        <Timer duration={timerDuration}/>
-      </div>
-      <Tldraw isDarkMode={true} />
+      <Tldraw
+        components={components}
+        onMount={(editor) => {
+          editor.user.updateUserPreferences({
+            color: randomSelectColor(),
+            name: username,
+            isDarkMode: true,
+          });
+          editor.on('event', (event) => {
+            setEditor(editor);
+            handleEvent(event, editor);
+          });
+        }}
+      />
     </div>
   );
 }
