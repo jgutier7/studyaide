@@ -51,4 +51,13 @@
     align-self: center;
     border-radius: 5px;
   }
-   
+  .logout {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin-top: 10px; 
+    align-self: center;
+    border-radius: 4px;
+  } 
