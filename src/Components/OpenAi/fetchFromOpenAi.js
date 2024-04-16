@@ -1,6 +1,5 @@
 export async function fetchFromOpenAi(providedApiKey, body) {
-	const apiKey = providedApiKey || process.env.REACT_APP_OPENAI_API_KEY;
-  
+	const apiKey = providedApiKey || process.env.REACT_APP_OPENAI_API_KEY; 
 	if (!apiKey) {
 	  throw new Error(
 		'You need to provide an API key. Make sure REACT_APP_OPENAI_API_KEY is set in your .env file.'

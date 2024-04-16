@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Tldraw } from '@tldraw/tldraw';
 import '@tldraw/tldraw/tldraw.css';
 // import InFrontOfCanvas from './WBComponents/InFrontOfCanvas'; 
-import CustomMainMenu from './WBComponents/CustomMainMenu';
+import CustomMainMenu from './WBComponents/CustomMainMenu'
 import { useEditorEvents } from './hooks';
 import { randomSelectColor } from './utils';
 import { fetchFromOpenAi } from '../OpenAi/fetchFromOpenAi'; // Adjust the path as needed
