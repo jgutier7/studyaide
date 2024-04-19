@@ -1,40 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useGoogleLogin } from '@react-oauth/google';
 
-function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Login = ({ onSuccess, onError }) => {
+    const login = useGoogleLogin({
+        onSuccess: onSuccess,
+        onError: onError
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Logging in with', email, password);
-  };
-
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    return (
+      <div className="login-page">
+        <div className="login-box">
+          <img src={require('../../images/full_logo_v2.png')} alt="studyAIde Logo" className="logo"/>
+          <p className="description-text">Your personalized study tool</p>
+          <button className="google-signin-button" onClick={login}>
+            <img src={require('../../images/google-icon.png')} alt="Google sign-in" className="google-icon"/>
+            Sign in with Google
+          </button>
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-}
+      </div>
+    );
+};
 
 export default Login;
