@@ -1,8 +1,12 @@
-import Login from './Components/Login/Login';
-import { googleLogout } from '@react-oauth/google';
-import axios from 'axios';
-import './styles/App.css';
-import './styles/Login.css';
+import React, { useState, useEffect } from 'react'; 
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'; 
+import Home from './Components/Home/Home'; 
+import Whiteboard from './Components/Whiteboard/Whiteboard'; 
+import Login from './Components/Login/Login'; 
+import { googleLogout } from '@react-oauth/google'; 
+import axios from 'axios'; 
+import './styles/App.css'; 
+import './styles/Login.css'; 
 
 function App() {
   const modules = [
