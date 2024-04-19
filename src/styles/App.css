@@ -4,7 +4,6 @@
     color: white;
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
-    padding: 20px;
     box-sizing: border-box;
   }
   
@@ -51,4 +50,43 @@
     align-self: center;
     border-radius: 5px;
   }
+<<<<<<< Updated upstream
    
+=======
+  .logout {
+    background-color: #333;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin-top: 10px; 
+    align-self: center;
+    border-radius: 4px;
+  } 
+
+  #logout{
+    position:absolute;
+    top:5%;
+    right:7%;
+  }
+
+  #logout:hover{
+    background-color: #49e0bb;
+  }
+
+  #profile_pic {
+    border-radius: 50%;
+    position:absolute;
+    scale:60%;
+    top:-0.4%;
+    right:0%;
+  }
+
+  #profile_name {
+    position:absolute;
+    top:0%;
+    right:7%;
+  }
+
+  
+>>>>>>> Stashed changes
