@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TLComponents, Tldraw } from '@tldraw/tldraw';
+import { Tldraw } from '@tldraw/tldraw';
 import '@tldraw/tldraw/tldraw.css';
 // import InFrontOfCanvas from './WBComponents/InFrontOfCanvas'; 
 import CustomMainMenu from './WBComponents/CustomMainMenu'
@@ -16,11 +16,12 @@ function Whiteboard() {
 
   const handleBackToOverview = () => navigate('/');
 
-  const components: TLComponents = {
+  const components = {
     MainMenu: () => <CustomMainMenu onBackToOverview={handleBackToOverview} onSuggestIdeas={sendToOpenAi} />,
     // MainMenu: () => <CustomMainMenu onBackToOverview={handleBackToOverview} />,
     // InFrontOfTheCanvas: () => <InFrontOfCanvas onSuggestIdeas={sendToOpenAi} />,
     TopPanel: CustomTopZone,
+    SharePanel: CustomShareZone,
   };
 
   const displaySuggestedTerms = useCallback((suggestedTerms) => {
@@ -171,6 +172,8 @@ function CustomTopZone() {
         width: '450px', // Width of the rectangle
         height: '30px', // Height of the rectangle
         position: 'relative',
+        border: '2px',
+        borderRadius: '8px',
         backgroundColor: '#2B2B2B', // Background color of the rectangle
         overflow: 'hidden', // Hide overflow content
       }}
@@ -187,5 +190,31 @@ function CustomTopZone() {
   );
 }
 
+function CustomShareZone() {
+  return (
+    <div
+      style={{
+        width: '160px', // Width of the rectangle
+        height: '200px', // Height of the rectangle
+        padding: '5px',
+        textAlign: 'left', 
+        border: '2px',
+        borderRadius: '8px',
+        position: 'relative',
+        backgroundColor: '#2B2B2B', // Background color of the rectangle
+        overflow: 'hidden', // Hide overflow content
+      }}
+    >
+      <h4>Let's start studying:</h4>
+      <ul>
+        <li>Add terms and definitions</li>
+        <li>Upload diagrams or images</li>
+        <li>Group terms with shapes</li>
+        <li>Draw connections</li>
+      </ul>
+      <p>Stuck? Suggest more terms from OpenAI</p>
+    </div>
+  )
+}
 
 export default Whiteboard;
