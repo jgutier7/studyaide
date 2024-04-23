@@ -45,10 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../images/craiyon_115911_generate_a_background_wallpaper_in_4k_in_black_and_white(1).jpg'); /* Change this to your desired background image path */
-    background-size: cover;     /* Cover ensures the image covers the entire div */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-color: #333; 
 }
 
 .login-box {
