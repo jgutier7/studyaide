@@ -1,0 +1,26 @@
+/* Calendar.css */
+.calendar-container {
+    padding:20px;
+}
+
+.button-container {
+    margin-bottom: 20px;
+  }
+  
+  .app-button {
+    background-color: #333; 
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    text-decoration: none; 
+    display: inline-block; 
+  }
+  
+  .app-button:hover {
+    background-color: #49e0bb; 
+  }
+  
