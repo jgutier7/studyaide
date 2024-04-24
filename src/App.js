@@ -8,6 +8,7 @@ import axios from 'axios';
 import './styles/App.css';
 import './styles/Login.css';
 import Calendar from './Components/Calendar/Calendar';
+import StudyPreferencesPage from './Components/StudyPreferences/StudyPreferencesPage';
 
 function App() {
   const modules = [
@@ -82,6 +83,7 @@ function App() {
           <Route path="/home" element={<Home modules={modules} profile={profile} logOut={logOut} />} />
           <Route path="/whiteboard/:moduleClass" element={<Whiteboard />} />
           <Route path="/calendar" element={profile ? <Calendar modules={modules} /> : <Navigate to="/" />} />
+          <Route path="/study-preferences" element={profile ? <StudyPreferencesPage /> : <Navigate to="/" />} /> 
         </Routes>
       </div>
     </BrowserRouter>

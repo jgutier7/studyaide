@@ -3,13 +3,12 @@ import { Calendar as BigCalendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import StudyPreferences from './StudyPreferences';
+import StudyPreferences from '../StudyPreferences/StudyPreferences';
 import '../../styles/Calendar.css'; 
 
 const localizer = momentLocalizer(moment);
 
 const Calendar = ({ modules }) => {
-  const [studySessions, setStudySessions] = useState([]);
   const [calendarEvents, setCalendarEvents] = useState([]);
 
   useEffect(() => {
@@ -25,29 +24,26 @@ const Calendar = ({ modules }) => {
     modules.forEach((module) => {
       const { title } = module;
       const intensity = preferences.modulePreferences.find(pref => pref.title === title)?.intensity || 1;
+      const daysUntilExam = preferences.modulePreferences.find(pref => pref.title === title).daysUntilExam;
+      const examDate = moment().add(daysUntilExam, 'days').startOf('day').toDate();
 
-      // Calculate exam date 
-      const examDate = moment().add(title === 'AP Biology' ? 42 : 46, 'days').startOf('day').toDate();
-
-      // Add exam date
       suggestedSessions.push({
         title: `${title} (Exam)`,
         start: examDate,
         end: examDate,
         allDay: true,
         sessionDuration: 0, 
-        accepted: true,
       });
 
       // Generate study sessions 
       const daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       let studySessionsPerWeek = {}; 
 
-      for (let j = 1; j <= (title === 'AP Biology' ? 42 : 46); j++) {
+      for (let j = 1; j <= parseInt(daysUntilExam); j++) {
         const studyDate = moment().add(j, 'days').startOf('day');
         const dayOfWeek = studyDate.day(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
   
-        if (!studySessionsPerWeek[title]) {
+        if (!studySessionsPerWeek[title] || dayOfWeek === 0) {
           studySessionsPerWeek[title] = 0;
         }
 
@@ -76,12 +72,12 @@ const Calendar = ({ modules }) => {
   
             // Check for conflicts with existing study sessions
             while (hasConflict(suggestedSessions, startTime, endTime)) {
-              startTime.add(1, 'minute');
+              startTime.add(1, 'second');
               endTime = startTime.clone().add(parseInt(preferences.sessionLength), 'minutes');
             }
   
             // Check for conflicts with exam timings
-            if (!moment(startTime).isSame(examDate, 'day')) {
+            if (!moment(startTime).isSame(examDate, 'day') && studySessionsPerWeek[title] < intensity) {
               suggestedSessions.push({
                 title: `${title} - Study Session`,
                 start: startTime.toDate(),
@@ -98,7 +94,6 @@ const Calendar = ({ modules }) => {
       }
     });
   
-    setStudySessions(suggestedSessions);
     setCalendarEvents(suggestedSessions);
   };
 
@@ -115,8 +110,8 @@ const Calendar = ({ modules }) => {
 
   const eventPropGetter = (event) => {
     const colors = {
-      'AP Biology': '#338eff', // Blue
-      'AP US History': '#ff5733', // Orange
+      'AP Biology': '#CE51C9', 
+      'AP US History': '#B5CE51',
     };
     return {
       style: {
@@ -130,6 +125,7 @@ const Calendar = ({ modules }) => {
       <div className="button-container"> {}
         <Link to="/home" className="app-button">Overview</Link>
         <Link to="/calendar" className="app-button">Calendar</Link>
+        <Link to="/study-preferences" className="app-button">Preferences</Link> {}
       </div>
       <h1>Study Plan Calendar</h1>
       <BigCalendar
@@ -139,6 +135,7 @@ const Calendar = ({ modules }) => {
         endAccessor="end"
         style={{ height: 500 }}
         eventPropGetter={eventPropGetter}
+        defaultView="week"
         onSelectEvent={(event) => window.location.href = `/whiteboard/${event.moduleClass}`} 
       />
     </div>
