@@ -8,8 +8,9 @@ const Home = ({ modules, profile, logOut }) => {
   return (
     <div className="home">
       <div className="navigation">
-        <button className="overview">Overview</button>
+        <Link to="/home" className="app-button">Overview</Link>
         <Link to="/calendar" className="app-button">Calendar</Link> {}
+        <Link to="/study-preferences" className="app-button">Preferences</Link> {}
       </div>
       {profile && (
         <div>

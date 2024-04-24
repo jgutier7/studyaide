@@ -12,7 +12,7 @@ const StudyPreferencesPage = () => {
         <Link to="/calendar" className="app-button">Calendar</Link>
         <Link to="/study-preferences" className="app-button">Preferences</Link> {}
       </div>
-      <h1>Study Preferences</h1>
+      <h1>Study Preferences</h1> 
       <div>
         <h3>Preferred Days:</h3>
         <ul>

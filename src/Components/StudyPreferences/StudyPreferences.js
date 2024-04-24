@@ -10,3 +10,4 @@ const StudyPreferences = {
 };
 
 export default StudyPreferences;
+ 
