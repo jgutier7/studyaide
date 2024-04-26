@@ -1,7 +1,7 @@
 import React from 'react';
 import { DefaultMainMenu, TldrawUiMenuGroup, TldrawUiMenuItem, DefaultMainMenuContent } from '@tldraw/tldraw';
 
-function CustomMainMenu({ onBackToOverview, onSuggestIdeas }) {
+function CustomMainMenu({ onBackToOverview, onSuggestIdeas, onGenerateQuiz }) {
   return (
     <DefaultMainMenu>
       <TldrawUiMenuGroup id="custom-items">
@@ -16,6 +16,12 @@ function CustomMainMenu({ onBackToOverview, onSuggestIdeas }) {
           label="Suggest More Ideas from OpenAI"
           icon="lightbulb" // Choose an appropriate icon or use "lightbulb" if suitable
           onSelect={onSuggestIdeas}
+        />
+        <TldrawUiMenuItem
+          id="generateQuiz"
+          label="Generate Quiz from OpenAI"
+          icon="lightbulb" // Choose an appropriate icon or use "lightbulb" if suitable
+          onSelect={onGenerateQuiz}
         />
       </TldrawUiMenuGroup>
       <DefaultMainMenuContent />

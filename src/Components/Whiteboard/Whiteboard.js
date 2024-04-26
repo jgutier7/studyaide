@@ -5,23 +5,42 @@ import '@tldraw/tldraw/tldraw.css';
 // import InFrontOfCanvas from './WBComponents/InFrontOfCanvas'; 
 import CustomMainMenu from './WBComponents/CustomMainMenu'
 import { useEditorEvents } from './hooks';
+//import { Modal } from 'react-bootstrap';
+import Modal from 'react-modal';
 import { randomSelectColor } from './utils';
 import { fetchFromOpenAi } from '../OpenAi/fetchFromOpenAi'; // Adjust the path as needed
+import { createQuiz } from '../OpenAi/QuizCreator'; // Adjust the path as needed
 
 function Whiteboard() {
   const navigate = useNavigate();
   const { handleEvent } = useEditorEvents();
   const [editor, setEditor] = useState(null);
   const username = "Jacob";
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [quizQuestions, setQuizQuestions] = useState([]);
 
   const handleBackToOverview = () => navigate('/');
 
   const components = {
-    MainMenu: () => <CustomMainMenu onBackToOverview={handleBackToOverview} onSuggestIdeas={sendToOpenAi} />,
+    MainMenu: () => <CustomMainMenu onBackToOverview={handleBackToOverview} onSuggestIdeas={sendToOpenAi} onGenerateQuiz={handleQuizGeneration} />,
     // MainMenu: () => <CustomMainMenu onBackToOverview={handleBackToOverview} />,
     // InFrontOfTheCanvas: () => <InFrontOfCanvas onSuggestIdeas={sendToOpenAi} />,
     TopPanel: CustomTopZone,
     SharePanel: CustomShareZone,
+  };
+
+  const handleQuizGeneration = async () => {
+    const studyBoard = 'CollegeBoard';
+    const selectedClass = 'Biology';
+    const topics = ['Heredity', 'Molecular Genetics'];
+    try {
+      const quiz = await createQuiz(studyBoard, selectedClass, topics);
+      console.log('Generated Quiz:', quiz);
+      setQuizQuestions(quiz.questions); // Adjust according to your actual data structure
+      setModalIsOpen(true);
+    } catch (error) {
+      console.error('Failed to generate quiz:', error);
+    }
   };
 
   const displaySuggestedTerms = useCallback((suggestedTerms) => {
@@ -144,6 +163,21 @@ function Whiteboard() {
           }
         }}
       />
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+      <div>
+        {quizQuestions.map((question, index) => (
+          <div key={index}>
+            <p>{question.question}</p>
+            <div>
+              {Object.entries(question.options).map(([key, value]) => (
+                <button key={key}>{key.toUpperCase()}: {value}</button>
+              ))}
+            </div>
+          </div>
+        ))}
+        <button onClick={() => setModalIsOpen(false)}>Close</button>
+      </div>
+    </Modal>
     </div>
   );
 }
